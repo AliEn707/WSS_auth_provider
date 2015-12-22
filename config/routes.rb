@@ -1,6 +1,15 @@
 WssAuth::Application.routes.draw do
-  use_doorkeeper
-  devise_for :users, controllers: { registrations: 'registrations' }
+	use_doorkeeper
+	devise_for :users, controllers: { registrations: 'registrations' }
+	devise_scope :user do
+		get '/users/sign_out', :to => 'devise/sessions#destroy'
+	end
+	namespace :api do
+		namespace :v1 do
+			# another api routes
+			get '/me' => "credentials#me"
+		end
+	end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
