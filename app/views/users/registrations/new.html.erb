@@ -1,0 +1,45 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+	<%= devise_error_messages! %>
+
+	<br />
+	<div>
+		<%= f.label :email %>
+		<%= f.email_field :email, autofocus: true %>
+	</div>
+
+	<br />
+	<div>	
+		<%= f.label  :time_zone, "#{t(:time_zone)} (#{t(:place_may_be_not_correct)})".html_safe%>
+		<%= f.time_zone_select(:time_zone)%>
+	</div>
+	<br />
+	<div>
+		<%= f.label :password %>
+		<%= f.password_field :password, autocomplete: "off" %>
+	</div>
+	<br />
+	<div>
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation, autocomplete: "off" %>
+	</div>
+		<div>
+			<%= recaptcha_tags(hl: @locale) %>
+		</div>
+	<div><%= f.submit "Sign up", class:"btn btn-inverse" %></div>
+<% end %>
+
+<%= render "users/shared/links" %>
+
+<script>
+	var d=new Date().toString().match(/([A-Z]+[\+-][0-9]+)/)[1];
+	var date=d.slice(0,d.length-2)+":"+d.slice(d.length-2,d.length);
+	var select=document.getElementById("user_time_zone");
+	var options=select.children;
+	for(var i in options)
+		if (options[i].innerHTML.indexOf(date)>=0){
+			select.selectedIndex=i;
+			break;
+		}
+</script>
