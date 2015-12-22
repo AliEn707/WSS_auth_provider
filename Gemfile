@@ -47,9 +47,11 @@ end
 gem 'doorkeeper', '2.2.1'
 gem 'doorkeeper-i18n'
 
-gem 'rack-cors', :require => 'rack/cors'
+#for sending mails with log
+gem 'logging-rails', :require => 'logging/rails'
+gem 'logging-email', require: 'logging'
 
-#gem 'protected_attributes'
+gem 'rack-cors', :require => 'rack/cors'
 
 gem "devise", "3.2.4"
 gem "recaptcha", require: "recaptcha/rails"
