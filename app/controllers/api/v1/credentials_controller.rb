@@ -4,7 +4,8 @@ module Api::V1
     respond_to     :json
 
     def me
-      respond_with current_resource_owner
+		sign_out current_user if current_user
+		respond_with current_resource_owner
     end
   end
 end

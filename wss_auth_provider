@@ -5,7 +5,7 @@
 
 RAILS_S_ROOT_DIR=/home/osuser/WSS_auth_provider
 
-RAILS_PID=/tmp/$0.pid
+RAILS_PID=/tmp/wss_auth_provider.pid
 
 export RAILS_ENV=production
 export RUBY_GC_HEAP_FREE_SLOTS=200000

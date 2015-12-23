@@ -2,14 +2,13 @@ Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (needs plugins)
   orm :active_record
 
-  enable_application_owner :confirmation => false
-  
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
     #fail "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
     # Put your resource owner authentication logic here.
     # Example implementation:
-	current_user || redirect_to(new_user_session_url)
+	I18n.locale = request.params[:locale] unless request.params[:locale].blank?
+	current_user || redirect_to(new_user_session_url) 
   end
   
 
@@ -21,11 +20,11 @@ Doorkeeper.configure do
    end
 
   # Authorization Code expiration time (default 10 minutes).
-   authorization_code_expires_in 20.seconds
+   authorization_code_expires_in 1.seconds
 
   # Access token expiration time (default 2 hours).
   # If you want to disable expiration, set this to nil.
-   access_token_expires_in 20.seconds
+   access_token_expires_in 1.seconds
 
   # Assign a custom TTL for implicit grants.
   # custom_access_token_expires_in do |oauth_client|
@@ -41,7 +40,7 @@ Doorkeeper.configure do
   # reuse_access_token
 
   # Issue access tokens with refresh token (disabled by default)
-  # use_refresh_token
+   #use_refresh_token
 
   # Provide support for an owner to be assigned to each registered application (disabled by default)
   # Optional parameter :confirmation => true (default false) if you want to enforce ownership of
@@ -78,7 +77,7 @@ Doorkeeper.configure do
   # by default in non-development environments). OAuth2 delegates security in
   # communication to the HTTPS protocol so it is wise to keep this enabled.
   #
-  # force_ssl_in_redirect_uri !Rails.env.development?
+   force_ssl_in_redirect_uri false#!Rails.env.development?
 
   # Specify what grant flows are enabled in array of Strings. The valid
   # strings and the flows they enable are:
@@ -107,4 +106,9 @@ Doorkeeper.configure do
 
   # WWW-Authenticate Realm (default "Doorkeeper").
   # realm "Doorkeeper"
+  
+	skip_authorization do
+		true
+	end
+
 end

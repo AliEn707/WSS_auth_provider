@@ -61,7 +61,7 @@ Logging::Rails.configure do |config|
   Logging.appenders.email( 'email',
         :from       => config.action_mailer.smtp_settings[:user_name],
 	:to         => ENV["RAILS_LOG_MAIL"],
-	:subject    => "Log spellchecker:",
+	:subject    => "Log WSS Auth:",
 	:address    => config.action_mailer.smtp_settings[:address],
 	:port       => config.action_mailer.smtp_settings[:port],
 	:domain     => config.action_mailer.smtp_settings[:domain],
