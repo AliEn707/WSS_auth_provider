@@ -94,7 +94,7 @@ WssAuth::Application.configure do
 		enable_starttls_auto: true  }
 	config.action_mailer.default_options = {from: 'mail@wsstudio.tk'}
 	#	Rails.application.routes.default_url_options[:host] = 'wsstudio.tk'
-	config.action_mailer.default_url_options = { host: 'wsstudio.tk', port: 80 }
+	config.action_mailer.default_url_options = { host: 'auth.wsstudio.tk', port: 80 }
 
 
 	# Set the logging destination(s)

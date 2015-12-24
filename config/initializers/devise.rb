@@ -17,6 +17,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
+   config.mailer = 'MyMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -129,7 +130,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-   config.remember_for = 2.seconds
+   config.remember_for = 10.seconds
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
@@ -150,7 +151,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-   config.timeout_in = 2.seconds
+   config.timeout_in = 8.seconds
 
   # If true, expires auth token on session timeout.
    config.expire_auth_token_on_timeout = true

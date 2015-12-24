@@ -14,7 +14,18 @@ WssAuth::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+	address:              'smtp.yandex.ru',
+	port:                 '587',
+	domain:               'wsstudio.tk',
+	user_name:            'test@wsstudio.tk',
+	password:             'testtest',
+	authentication:       'login',
+	enable_starttls_auto: true  }
+config.action_mailer.default_options = {from: 'test@wsstudio.tk'}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -27,7 +38,7 @@ WssAuth::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
 
   # Set the logging destination(s)
   config.log_to = %w[stdout file]

@@ -7,6 +7,7 @@ Doorkeeper.configure do
     #fail "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
     # Put your resource owner authentication logic here.
     # Example implementation:
+	cookies["redirect_uri"]=params["origin"]
 	I18n.locale = request.params[:locale] unless request.params[:locale].blank?
 	current_user || redirect_to(new_user_session_url) 
   end

@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 	def create
 		if verify_recaptcha
+			Thread.current["actiondispatch.request"] = request
 			super
 		else
 			build_resource(sign_up_params)
@@ -13,6 +14,10 @@ class RegistrationsController < Devise::RegistrationsController
 	
 	def new
 		super
+	end
+	
+	def after_inactive_sign_up_path_for(resource)
+		registration_success_path
 	end
 	
 	private
